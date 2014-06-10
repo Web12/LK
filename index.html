@@ -155,8 +155,10 @@ body {
 <td id="in100">0</td><td id="out100">0</td><td id="tot100">0</td></tr>
 <tr align="right"><td align="left"><span class="ball" style="background:#d1d2d4"></span> &nbsp; 250</td>
 <td id="in250">0</td><td id="out250">0</td><td id="tot250">0</td></tr>
-<tr align="right" onclick="alert(111)"><td align="left"><span class="ball" style="background:#93c9e5"></span> &nbsp; 500</td>
+<tr align="right" onclick="show(500)"><td align="left"><span class="ball" style="background:#93c9e5"></span> &nbsp; 500</td>
 <td id="in500">0</td><td id="out500">0</td><td id="tot500">0</td></tr>
+<tr id="det500" style="display:none;" align="right" class="info"><td align="left">Количество</td><td>111</td><td>333</td><td>&nbsp;</td></tr>
+
 <tr align="right"><td align="left"><span class="ball" style="background:#71bf45"></span> 1000</td>
 <td id="in1000">0</td><td id="out1000">0</td><td id="tot1000">0</td></tr>
 <tr align="right"><td align="left"><span class="ball" style="background:#f9a61a"></span> 2000</td>
@@ -202,6 +204,9 @@ body {
 </div>
 
 <script>
+function show(t) {
+$('#det'+t).toggle();
+}
 function stat(t) {
 var nominal = [100,250,500,1000,2000,3000];
 var new_page = 'day';
