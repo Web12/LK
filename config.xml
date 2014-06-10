@@ -28,5 +28,8 @@
 		<access origin="http://bingo-boom.ru" subdomains="true" />
 		<preference name="fullscreen" value="true" />
 		<preference name="DisallowOverscroll" value="true"/>
+		<feature name="InAppBrowser">
+			<param name="ios-package" value="CDVInAppBrowser" />
+		</feature>
 		
 		</widget>
