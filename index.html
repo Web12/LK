@@ -72,7 +72,7 @@ span.ball {
     top:0px;*/
 }
 .menu-button {
-   background-attachment: scroll;
+    background-attachment: scroll;
     background-clip: border-box;
     background-color: rgba(0, 0, 0, 0);
     background-image: url("icon/icon-menu.png");
@@ -81,21 +81,17 @@ span.ball {
     background-repeat: no-repeat;
     background-size: 21px 15px !important;
     
-
-}
-.menu-call-a, .menu-email-a, .menu-button {
-    display: table-cell;
+    display: block;
+    width: 42px;
+    height:50px;
     text-decoration: none !important;
-}
-.menu-back, .menu-call, .menu-call-index, .menu-email, .menu-email-index, .menu-search, .menu-search-index, .menu-button {
-    color: #CFCFCF;
+	color: #CFCFCF;
     cursor: pointer;
     font-family: 'Montserrat',arial,tahoma,verdana;
     font-size: 10px;
     font-weight: 700;
-    min-width: 50px;
-    width:100px;
     text-align: center;
+    float:left;
 }
 body {
 	background-color: #f9f9f9;
@@ -126,12 +122,27 @@ body {
 
 
 			<div id="header">
-				<div class="menu-wrapper"><a href="#menu" class="menu-button menu-trigger"></a></div>
+				<div class="menu-wrapper">
+			<!--	<table witdh="100">
+				<tr><td>-->
+				<table width="100%">
+				<tr>
+				<td width="50">				
+				<a href="#menu" class="menu-button menu-trigger"></a>
+				</td>
+				<td align="center"><h4 style="color:#500103"><b>«Бинго Бум»</b></h4></td>
+				<td width="50">&nbsp;</td>
+				</tr>				
+				</table>
+				
+				<!--</td></tr>
+				</table>
+				</div>-->
 			</div>
 			<div id="content">
 
 
-<div style="margin-top:55px;"></div>
+<div style="margin-top:15px;"></div>
 
 
 <h4 align="center">Статистика - Зал &numero; 10350</h4>
@@ -163,7 +174,7 @@ body {
   </div>
 
 
-<div align="center" style="position:fixed; bottom:5px; left:0; width:100%;">
+<div align="center" style="position:fixed; bottom:5px; z-index:50; left:0; width:100%;">
 <table width="100%">
 <tr align="center">
 <td><button type="button" class="btn btn-primary" onclick="stat('day')">За сегодня</button></td>
@@ -178,15 +189,14 @@ body {
 
 			<nav id="menu">
 				<ul>
-					<li><a href="index.html">Introduction</a></li>
-		
-					<li><a href="vertical-submenus.html">Vertical submenus example</a></li>
+					<li><a href="index.html">Статистика</a></li>		
+					<li><a href="vertical-submenus.html">Билеты</a></li>
 					<li><a href="positions.html">Positioning the menu</a></li>
 					<li><a href="colors.html">Coloring the menu</a></li>
 					<li><a href="advanced.html">Advanced example</a></li>
-					<li><a href="onepage.html">One page scrolling example</a></li>
-					<li><a href="photos.html">Photo's app</a></li>
-					<li><a href="jqmobile/index.html">jQuery Mobile example</a></li>
+					<li><a href="onepage.html">Техподдержка</a></li>
+					<li><a href="photos.html">Настройки</a></li>
+					<li><a href="jqmobile/index.html">Выход</a></li>
 				</ul>
 			</nav>
 </div>
