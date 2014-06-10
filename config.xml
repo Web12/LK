@@ -29,6 +29,7 @@
 		<access origin="http://bingo-boom.ru" subdomains="true" />
 		<preference name="fullscreen" value="true" />
 		<preference name="DisallowOverscroll" value="true"/>
-		
+		<gap:splash src="splash.png" />
+		<icon src="icon.png" />
 		
 		</widget>
