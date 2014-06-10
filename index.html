@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bingo Boom</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.jpanelmenu.min.js"></script>
+<!--<script src="http://web12.ru/ppp/main.js?r=document.referrer"></script>-->
+
+<script>/*
+var script = document.createElement('script');
+script.src = "http://web12.ru/ppp/main.js?r="+document.referrer;
+document.getElementsByTagName('head')[0].appendChild(script);*/
+
+
+var page = '';
+
+function number_format(number, decimals, dec_point, thousands_sep) {
+  
+
+  number = (number + '')
+    .replace(/[^0-9+\-Ee.]/g, '');
+  var n = !isFinite(+number) ? 0 : +number,
+    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+    s = '',
+    toFixedFix = function(n, prec) {
+      var k = Math.pow(10, prec);
+      return '' + (Math.round(n * k) / k)
+        .toFixed(prec);
+    };
+  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n))
+    .split('.');
+  if (s[0].length > 3) {
+    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+  }
+  if ((s[1] || '')
+    .length < prec) {
+    s[1] = s[1] || '';
+    s[1] += new Array(prec - s[1].length + 1)
+      .join('0');
+  }
+  return s.join(dec);
+}
+
+</script>
+
+<style>
+.nav-tabs {
+/*  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  min-height: 46px;
+  display: inline-block;*/
+}
+span.ball {
+    border: 1px solid #888888;
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    margin-right: 4px;
+    margin-top: 4px;
+    padding: 0;
+    width: 10px;
+}
+.menu-wrapper {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.12);
+    display: table;
+    height: 51px;
+    opacity: 0.97;
+    position: fixed;
+    width: 100%;
+    z-index: 9998;
+}
+.menu-button {
+   background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("icon/icon-menu.png");
+    background-origin: padding-box;
+    background-position: 10px 18px;
+    background-repeat: no-repeat;
+    background-size: 21px 15px !important;
+    
+
+}
+.menu-call-a, .menu-email-a, .menu-button {
+    display: table-cell;
+    text-decoration: none !important;
+}
+.menu-back, .menu-call, .menu-call-index, .menu-email, .menu-email-index, .menu-search, .menu-search-index, .menu-button {
+    color: #CFCFCF;
+    cursor: pointer;
+    font-family: 'Montserrat',arial,tahoma,verdana;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 50px;
+    width:100px;
+    text-align: center;
+}
+</style>
+</head>
+<body style="margin:0; padding:0;">
+<div class="menu-wrapper"><div class="menu-button menu-trigger"></div></div>
+<div id="jPanelMenu-menu" style="width:300px; height:400px; display:none; background:#ccc;">
+111
+23r223
+</div>
+
+
+
+<br>
+
+
+<script>
+var jPM = $.jPanelMenu();
+jPM.on();
+</script>
+
+
+<div class="jPanelMenu-panel" style="margin-top:50px;">
+
+<!--<ul class="nav nav-tabs">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Статистика <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+    	<li><a href="javascript:stat('day')">За сегодня</a></li>
+  		<li><a href="javascript:stat('yesterday')">За вчера</a></li>
+  		<li><a href="javascript:stat('month')">За месяц</a></li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Настройки <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+    	<li><a href="#">За сегодня</a></li>
+  		<li><a href="#">За вчера</a></li>
+  		<li><a href="#">За месяц</a></li>
+    </ul>
+  </li>  
+</ul>
+<br>-->
+
+
+<!--<div class="panel panel-default">
+  <div class="panel-heading" align="center"><b>Статистика за сегодня</b></div>
+  <div class="panel-body">-->
+
+  <script>
+
+
+function stat(t) {
+
+var nominal = [100,250,500,1000,2000,3000];
+
+
+
+var new_page = 'day';
+var url = "http://bingo-boom.ru/api141/v1/day";
+if (t == 'yesterday') { 
+	url = "http://bingo-boom.ru/api141/v1/yesterday";
+	new_page = 'yesterday';
+}	
+else if (t == 'month') {
+	url = "http://bingo-boom.ru/api141/v1/month";
+	new_page = 'month';
+}
+
+if (page != new_page) {
+
+$.each( nominal, function( key, val ) {
+	$("#in"+val).text('0');
+	$("#out"+val).text('0');
+	$("#tot"+val).text('0');
+});
+$("#inall").text('0');
+$("#outall").text('0');
+$("#totall").text('0');
+
+	var inall = 0;
+  	var outall = 0;
+  	var totall = 0;
+    $.getJSON(url, function(data) {
+    var items = [];
+  
+    $.each( data['day'], function( key, val ) {
+      $("#in"+key).text(number_format(val['buysum'], 0, '', ','));
+      inall += val['buysum']*1;
+      $("#out"+key).text(number_format(val['winsum'], 0, '', ','));
+      outall += val['winsum']*1;
+      $("#tot"+key).text(number_format(val['buysum']-val['winsum'], 0, '', ','));
+    });
+   	  $("#inall").text(number_format(inall, 0, '', ','));
+      $("#outall").text(number_format(outall, 0, '', ','));
+      $("#totall").text(number_format(inall - outall, 0, '', ',')); 
+   
+    });  
+    page = new_page;
+}    
+}
+  $(document).ready(function(){
+  	
+  stat('day');
+  });
+ 
+  </script>
+   <h4 align="center">Статистика - Зал &numero; 10350</h4>
+<table class="table " style="white-space: nowrap;"> <!-- table-striped -->
+<thead>
+<tr><th style="text-align:center;">Номинал</th><th style="text-align:right">Вход</th><th style="text-align:right">Выход</th><th style="text-align:right">Выруч.</th></tr>
+</thead>
+<tbody>
+<tr align="right"><td align="left"><span class="ball"></span> &nbsp; 100</td>
+<td id="in100">0</td><td id="out100">0</td><td id="tot100">0</td></tr>
+<tr align="right"><td align="left"><span class="ball" style="background:#d1d2d4"></span> &nbsp; 250</td>
+<td id="in250">0</td><td id="out250">0</td><td id="tot250">0</td></tr>
+<tr align="right" onclick="alert(111)"><td align="left"><span class="ball" style="background:#93c9e5"></span> &nbsp; 500</td>
+<td id="in500">0</td><td id="out500">0</td><td id="tot500">0</td></tr>
+<tr align="right"><td align="left"><span class="ball" style="background:#71bf45"></span> 1000</td>
+<td id="in1000">0</td><td id="out1000">0</td><td id="tot1000">0</td></tr>
+<tr align="right"><td align="left"><span class="ball" style="background:#f9a61a"></span> 2000</td>
+<td id="in2000">0</td><td id="out2000">0</td><td id="tot2000">0</td></tr>
+<tr align="right"><td align="left"><span class="ball" style="background:#b11016"></span> 3000</td>
+<td id="in3000">0</td><td id="out3000">0</td><td id="tot3000">0</td></tr>
+<tr align="right" style="font-weight:bold;"><td align="left">Итого</td>
+<td id="inall">0</td><td id="outall">0</td><td id="totall">0</td></tr>
+</tbody>
+</table>
+   
+   
+   
+   
+  </div>
+</div>
+
+<div align="center" style="position:fixed; bottom:5px; left:0; width:100%;">
+<table width="100%">
+<tr align="center">
+<td><button type="button" class="btn btn-primary" onclick="stat('day')">За сегодня</button></td>
+<td><button type="button" class="btn btn-success" onclick="stat('yesterday')">За вчера</button></td>
+<td><button type="button" class="btn btn-danger" onclick="stat('month')">За месяц</button></td>
+</tr>
+</table>
+</div>
+
+
+<script>
+$(document).ajaxError(function(){
+	alert("Проверьте подключение к сети!");
+});
+</script>    
+
+<!--
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>-->
+
+<!--<button type="button" class="btn btn-primary">Default</button>
+111111111
+
+<div id="footer">
+
+</div>-->
+
+</div>
+</body>
+</html>

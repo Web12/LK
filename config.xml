@@ -1,0 +1,32 @@
+    <?xml version="1.0" encoding="UTF-8" ?>
+	<widget xmlns = "http://www.w3.org/ns/widgets"
+		 
+		 xmlns:gap = "http://phonegap.com/ns/1.0"
+		 id = "com.phonegap.example"
+		 version = "1.0.0"
+		 versionCode = "10" >
+		<preference name="phonegap-version" value="3.3.0" />
+		
+		<name>LK</name>
+		
+		<description>
+			Bingo LK
+		</description>
+		
+		<author href="http://yoursite.com" email="you@youremail.com">
+			Your Name
+		</author>
+		<preference name="phonegap-version" value="3.3.0" />
+		<preference name="orientation" value="portrait" />
+		<gap:plugin name="org.apache.cordova.device" />
+		<gap:plugin name="org.apache.cordova.dialogs" />
+		<gap:plugin name="org.apache.cordova.contacts" version="0.2.9" />
+		<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
+		<gap:plugin name="com.phonegap.plugin.statusbar" />
+		<gap:platform name="ios" />
+		<access origin="http://api.bingo-boom.net" subdomains="true" />
+		<access origin="http://bingo-boom.ru" subdomains="true" />
+		<preference name="fullscreen" value="true" />
+		<preference name="DisallowOverscroll" value="true"/>
+		
+		</widget>
