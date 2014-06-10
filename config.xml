@@ -16,6 +16,8 @@
 		<author href="http://yoursite.com" email="harut@bingo-boom.ru">
 			HHV
 		</author>
+		<gap:splash src="splash.png" />
+		<icon src="icon.png" />		
 		<preference name="phonegap-version" value="3.3.0" />
 		<preference name="orientation" value="portrait" />
 		<gap:plugin name="org.apache.cordova.device" />
@@ -29,7 +31,6 @@
 		<access origin="http://bingo-boom.ru" subdomains="true" />
 		<preference name="fullscreen" value="true" />
 		<preference name="DisallowOverscroll" value="true"/>
-		<gap:splash src="splash.png" />
-		<icon src="icon.png" />
+		splash
 		
 		</widget>
