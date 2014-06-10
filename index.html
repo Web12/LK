@@ -19,6 +19,7 @@
 
 <script>
 var page = '';
+var game = '0';
 function number_format(number, decimals, dec_point, thousands_sep) {
   number = (number + '')
     .replace(/[^0-9+\-Ee.]/g, '');
@@ -318,11 +319,11 @@ html.mm-opening.mm-front .mm-fixed-bottom {
 </div>
 
 <div style="margin: 0 10px;">
-<select class="form-control" style="">
-  <option value="0">--- Все Игры ---</option>
-  <option value="bingo">Бинго</option>
-  <option value="sea">Морской Бой</option>
-  <option value="lucky">Lucky Line</option>
+<select class="form-control" onchange="changeGame()" id="gamename">
+  <option value="0" selected>--- Все Игры ---</option>
+  <option value="BINGO">Бинго</option>
+  <option value="SEABATTLE">Морской Бой</option>
+  <option value="LINE">Lucky Line</option>
 </select>
 </div>
 
@@ -345,6 +346,12 @@ html.mm-opening.mm-front .mm-fixed-bottom {
 </div>
 
 <script>
+function changeGame() {
+	game = $("#gamename :selected").val();
+	var tmp = page;
+	page = '';
+	stat(tmp);
+}
 function app() 
 {
 	var ref = window.open('https://itunes.apple.com/ru/app/bingo-boom/id731852567?mt=8&uo=4', '_system');
@@ -358,6 +365,7 @@ if (det_now != t) {
 det_now = t;
 $('#det'+t).toggle();
 }
+
 function stat(t) {
 var nominal = [100,250,500,1000,2000,3000];
 var new_page = 'day';
@@ -370,6 +378,10 @@ else if (t == 'month') {
 	url = "http://bingo-boom.ru/api141/v1/month";
 	new_page = 'month';
 }
+
+//if (game != '0') {
+	url = url + '?game=' + game;
+//}
 
 if (page != new_page) {
 
