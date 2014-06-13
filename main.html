@@ -399,9 +399,8 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 
 <script>
 function logout() {
-	localStorage.setItem("hall", null);
-    localStorage.setItem("token", null);
-    alert(111);
+	localStorage.removeItem("hall");
+    localStorage.removeItem("token");
     window.location.replace("index.html"); 
 }
 
