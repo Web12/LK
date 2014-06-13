@@ -30,6 +30,7 @@ function checkConnection() {
 
 
 	window.addEventListener('load', function () {
+		if (checkConnection() == false) $('#model_error').modal('show');
 		FastClick.attach(document.body);
 	}, false);
 </script> 
@@ -345,25 +346,22 @@ html.mm-opening.mm-front .mm-fixed-bottom {
 </div>
 
 </div>
-<button class="btn btn-primary" data-toggle="modal" data-target=".bb">Small modal</button>
-<div class="modal fade bb">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#model_error">Small modal</button>
+
+<div class="modal fade" id="model_error"><div class="modal-dialog"><div class="modal-content">
+<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title">Ошибка соединения</h4></div>
+<div class="modal-body">Проверьте подключение к интернету!</div>
+</div></div></div>
+<script>
+$('#model_error').on('hidden.bs.modal', function (e) {
+	if (checkConnection() == false) {
+		$('#model_error').modal('show');
+	}	
+})
+</script>
 
 
 			<nav id="menu">
