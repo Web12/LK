@@ -11,13 +11,19 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/fastclick.js"></script> 
 <script>
+var hall  = null;
+var token = null;
 
-//localStorage.setItem("name", "Alen");
-
-var ttt = localStorage.getItem("name");
-var ttt2 = localStorage.getItem("name3");
-alert(ttt);
-alert(ttt2);
+function checkAuth() {
+	hall  = localStorage.getItem("hall");
+	token = localStorage.getItem("token");
+	
+	if (hall && token) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 var connect = true;
 function checkConnection() {
@@ -32,6 +38,12 @@ function checkConnection() {
 	return connect;
 }
 
+$(document).ready(function(){
+	
+	if (checkAuth()) {
+		location.href = 'main.html'; 
+	}
+});
 	window.addEventListener('load', function () {
 		if (checkConnection() == false) { $('#model_error').modal('show'); }
 		FastClick.attach(document.body);
@@ -95,7 +107,8 @@ $("#form_login").submit(function(){
     		if (data['error'] != '0') {
    				$('#model_auth').modal('show');
     		} else {
-    			alert(data['token']);
+    			localStorage.setItem("hall", club);
+    			localStorage.setItem("token", data['token']);
     		}
     		
     });
