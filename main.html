@@ -4,92 +4,51 @@
 <meta charset="utf-8">
 <title>Bingo Boom</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
+<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+<link href="css/mmenu.css" type="text/css" rel="stylesheet">
 <script src="phonegap.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<!--<script src="js/jquery.jpanelmenu.min.js"></script>-->
+<script type="text/javascript" src="js/jquery.mmenu.min.js"></script>
 <script src="js/fastclick.js"></script> 
+<script src="js/function.js"></script>
 <script>
 var connect = true;
-function checkConnection() {
-	var networkState = navigator.connection.type;
-	if (networkState == Connection.NONE) {
-		connect = false;
-	}	
-	else {
-		connect = true;
-	}	
-	
-	return connect;
-}
+var hall;
+var token;
+var page = '';
+var game = '0';
+</script>
 
-var hall  = null;
-var token = null;
 
-function checkAuth() {
-	hall  = localStorage.getItem("hall");
-	token = localStorage.getItem("token");
-	
-	if (hall && token) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
+<script>
 $(document).ready(function(){
-	
+	connect = checkConnection();
+	if (connect == false) { $('#model_error').modal('show'); }
+
 	if (!checkAuth()) {
 		window.location.replace("index.html");
 	} else {
 		$("#hall").text(hall);
 	}
+	
+	$('nav#menu').mmenu({
+		zposition: "front"
+	});
+	
+	FastClick.attach(document.body);
 });
 
 
 
 
 
-	window.addEventListener('load', function () {
+	/*window.addEventListener('load', function () {
 		if (checkConnection() == false) { $('#model_error').modal('show'); }
 		FastClick.attach(document.body);
-	}, false);
+	}, false);*/
 </script> 
-
-<script>
-var page = '';
-var game = '0';
-function number_format(number, decimals, dec_point, thousands_sep) {
-  number = (number + '')
-    .replace(/[^0-9+\-Ee.]/g, '');
-  var n = !isFinite(+number) ? 0 : +number,
-    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-    s = '',
-    toFixedFix = function(n, prec) {
-      var k = Math.pow(10, prec);
-      return '' + (Math.round(n * k) / k)
-        .toFixed(prec);
-    };
-  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n))
-    .split('.');
-  if (s[0].length > 3) {
-    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-  }
-  if ((s[1] || '')
-    .length < prec) {
-    s[1] = s[1] || '';
-    s[1] += new Array(prec - s[1].length + 1)
-      .join('0');
-  }
-  return s.join(dec);
-}
-
-</script>
 
 <style>
 .nav-tabs {
@@ -160,119 +119,13 @@ body {
 .det {
 	display: none;
 }
-html.mm-front.mm-opened .mm-page {
-  top: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  left: 0 !important; }
-
-.mm-menu.mm-front,
-.mm-menu.mm-next {
-  -webkit-transition: none 0.4s ease;
-  -moz-transition: none 0.4s ease;
-  -ms-transition: none 0.4s ease;
-  -o-transition: none 0.4s ease;
-  transition: none 0.4s ease;
-  -webkit-transition-property: top, right, bottom, left, -webkit-transform;
-  -moz-transition-property: top, right, bottom, left, -moz-transform;
-  -ms-transition-property: top, right, bottom, left, -o-transform;
-  -o-transition-property: top, right, bottom, left, -o-transform;
-  transition-property: top, right, bottom, left, transform; }
-
-html.mm-front .mm-page,
-html.mm-front #mm-blocker {
-  z-index: 0; }
-
-.mm-menu.mm-front {
-  z-index: 1;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); }
-
-html.mm-opened.mm-next .mm-page {
-  box-shadow: none; }
-
-html.mm-opening .mm-menu.mm-front, html.mm-opening .mm-menu.mm-next {
-  left: 0%; }
-
-.mm-menu.mm-top.mm-front, .mm-menu.mm-top.mm-next {
-  left: 0; }
-
-html.mm-opening .mm-menu.mm-top.mm-front, html.mm-opening .mm-menu.mm-top.mm-next {
-  left: 0;
-  top: 0%; }
-
-.mm-menu.mm-right.mm-front, .mm-menu.mm-right.mm-next {
-  left: auto; }
-
-html.mm-opening .mm-menu.mm-right.mm-front, html.mm-opening .mm-menu.mm-right.mm-next {
-  left: auto;
-  right: 0%; }
-
-.mm-menu.mm-bottom.mm-front, .mm-menu.mm-bottom.mm-next {
-  top: auto;
-  left: 0; }
-
-html.mm-opening .mm-menu.mm-bottom.mm-front, html.mm-opening .mm-menu.mm-bottom.mm-next {
-  left: 0;
-  bottom: 0%; }
-
-.mm-menu.mm-front, .mm-menu.mm-next {
-  left: -80%; }
-
-@media all and (max-width: 175px) {
-  .mm-menu.mm-front, .mm-menu.mm-next {
-    left: -140px; } }
-@media all and (min-width: 550px) {
-  .mm-menu.mm-front, .mm-menu.mm-next {
-    left: -440px; } }
-.mm-menu.mm-top.mm-front, .mm-menu.mm-top.mm-next {
-  top: -80%; }
-
-@media all and (max-height: 175px) {
-  .mm-menu.mm-top.mm-front, .mm-menu.mm-top.mm-next {
-    top: -140px; } }
-@media all and (min-height: 1100px) {
-  .mm-menu.mm-top.mm-front, .mm-menu.mm-top.mm-next {
-    top: -880px; } }
-.mm-menu.mm-right.mm-front, .mm-menu.mm-right.mm-next {
-  right: -80%; }
-
-@media all and (max-width: 175px) {
-  .mm-menu.mm-right.mm-front, .mm-menu.mm-right.mm-next {
-    right: -140px; } }
-@media all and (min-width: 550px) {
-  .mm-menu.mm-right.mm-front, .mm-menu.mm-right.mm-next {
-    right: -440px; } }
-.mm-menu.mm-bottom.mm-front, .mm-menu.mm-bottom.mm-next {
-  bottom: -80%; }
-
-@media all and (max-height: 175px) {
-  .mm-menu.mm-bottom.mm-front, .mm-menu.mm-bottom.mm-next {
-    bottom: -140px; } }
-@media all and (min-height: 1100px) {
-  .mm-menu.mm-bottom.mm-front, .mm-menu.mm-bottom.mm-next {
-    bottom: -880px; } }
-html.mm-front .mm-fixed-top,
-html.mm-front .mm-fixed-bottom,
-html.mm-opening.mm-front .mm-fixed-top,
-html.mm-opening.mm-front .mm-fixed-bottom {
-  left: 0;
-  right: auto; }
-html.mm-front .mm-fixed-top,
-html.mm-opening.mm-front .mm-fixed-top {
-  top: 0; }
-html.mm-front .mm-fixed-bottom,
-html.mm-opening.mm-front .mm-fixed-bottom {
-  bottom: 0; }
 
 </style>
-<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.css" />
-		<script type="text/javascript" src="js/jquery.mmenu.min.js"></script>
-		<script type="text/javascript">
-			$(function() {
-				$('nav#menu').mmenu({
-					zposition: "front"
-				});
-			});
+
+<script type="text/javascript">
+$(function() {
+
+	});
 		</script>
 </head>
 <body style="margin:0; padding:0;background:#fff;">
