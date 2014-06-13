@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <title>My Barcode/QR Code Scanner</title>
+        <style>
+            body{
+                 background:#888888 none repeat scroll 0 0;
+            }
+            input[type='text']{
+                width:18em;
+                border:1px solid black;
+            }
+            input[type='button']{
+                width:20em;
+                border:1px solid black;
+                color:#ffffff;
+                font-family:"Times New Roman",Times,serif;
+                font-size:0.9em;
+                font-weight:bold;
+                background:#737CA1;
+            }
+        </style>
+        <script src="phonegap.js"></script>
+		<script src="js/jquery.min.js"></script>
+<!--        <script type="text/javascript" src="cordova-2.7.0.js"></script>
+        <script type="text/javascript" src="barcodescanner.js"></script>-->
+        <script type="text/javascript">
+            function scanCode(){
+                window.plugins.barcodeScanner.scan(
+                    function(result){
+                        alert("Scanned Code: " + result.text
+                        + ". Format: " + result.format
+                        + ". Cancelled: " + result.cancelled);
+                    },
+                    function(error){
+                        alert("Scan failed: " + error);
+                    }
+                );
+            }
+ 
+            function encodeData(){
+                var data = document.getElementById("data").value;
+                if (data != ''){
+                    window.plugins.barcodeScanner.encode(
+                        BarcodeScanner.Encode.TEXT_TYPE, data,
+                        function(success){
+                            alert("Encode success: " + success);
+                        },
+                        function(fail){
+                            alert("Encoding failed: " + fail);
+                        }
+                    );
+                }
+                else{
+                    alert("Please enter some data.");
+                    return false;
+                }
+            }
+        </script>
+    </head>
+ 
+    <body>
+        <h3>Barcode/QR Code Scanner And Encoder</h3>
+ 
+        <input type="button" value="Scan Code" onclick="scanCode();"/><br/><br/>
+ 
+        Data : <br/>
+        <input type="text" name="data" id="data" /><br/><br/>
+        <input type="button" value="Encode Data" onclick="encodeData();"/>
+    </body>
+</html>
