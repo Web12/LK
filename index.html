@@ -25,6 +25,10 @@ function checkAuth() {
 	}
 }
 
+if (checkAuth()) {
+	window.location.replace("main.html"); 
+}
+
 var connect = true;
 function checkConnection() {
 	var networkState = navigator.connection.type;
@@ -40,9 +44,9 @@ function checkConnection() {
 
 $(document).ready(function(){
 	
-	if (checkAuth()) {
+	/*if (checkAuth()) {
 		window.location.replace("main.html"); 
-	}
+	}*/
 });
 	window.addEventListener('load', function () {
 		if (checkConnection() == false) { $('#model_error').modal('show'); }
