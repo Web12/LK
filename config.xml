@@ -16,8 +16,12 @@
 		<author href="http://yoursite.com" email="harut@bingo-boom.ru">
 			HHV
 		</author>
+		
 		<preference name="phonegap-version" value="3.3.0" />
 		<preference name="orientation" value="portrait" />
+		<preference name="fullscreen" value="true" />
+		<preference name="DisallowOverscroll" value="true"/>
+		
 		<gap:plugin name="org.apache.cordova.device" />
 		<gap:plugin name="org.apache.cordova.dialogs" />
 		<gap:plugin name="org.apache.cordova.contacts" version="0.2.9" />
@@ -25,8 +29,8 @@
 		<gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" />
 		<gap:plugin name="com.phonegap.plugin.statusbar" />
 		<gap:platform name="ios" />
+		
 		<access origin="http://api.bingo-boom.net" subdomains="true" />
 		<access origin="http://bingo-boom.ru" subdomains="true" />
-		<preference name="fullscreen" value="true" />
-		<preference name="DisallowOverscroll" value="true"/>		
+		
 		</widget>
