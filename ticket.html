@@ -28,6 +28,7 @@
         <script type="text/javascript" src="barcodescanner.js"></script>-->
         <script type="text/javascript">
             function scanCode(){
+            	console.log('scanClick');
                 window.plugins.barcodeScanner.scan(
                     function(result){
                         alert("Scanned Code: " + result.text
@@ -38,6 +39,7 @@
                         alert("Scan failed: " + error);
                     }
                 );
+                console.log('scanClick - end');
             }
  
             function encodeData(){

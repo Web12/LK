@@ -26,6 +26,7 @@
 		
 		<gap:plugin name="org.apache.cordova.device" />
 		<gap:plugin name="org.apache.cordova.dialogs" />
+		<gap:plugin name="org.apache.cordova.console" version="0.2.7" />
 		<gap:plugin name="org.apache.cordova.contacts" version="0.2.9" />
 		<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
 		<gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" />
