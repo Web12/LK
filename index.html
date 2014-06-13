@@ -30,7 +30,7 @@ function checkConnection() {
 
 
 	window.addEventListener('load', function () {
-		if (checkConnection() == false) $('#model_error').modal('show');
+		if (checkConnection() == false) { $('#model_error').modal('show'); }
 		FastClick.attach(document.body);
 	}, false);
 </script> 
@@ -473,7 +473,8 @@ $(".det").hide();
 
 <script>
 $(document).ajaxError(function(){
-	alert("Проверьте подключение к сети!");
+	if (checkConnection() == false) { $('#model_error').modal('show'); }
+	else { alert("Ошибка!"); }
 });
 </script>    
  
