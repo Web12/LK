@@ -42,9 +42,12 @@ function checkAuth() {
 $(document).ready(function(){
 	
 	if (!checkAuth()) {
-		location.href = 'index.html';
+		window.location.replace("index.html");
+	} else {
+		$("#hall").text(hall);
 	}
 });
+
 
 
 
@@ -300,7 +303,7 @@ html.mm-opening.mm-front .mm-fixed-bottom {
 <div style="margin-top:15px;"></div>
 
 
-<h4 align="center">Статистика - Зал &numero; 10350</h4>
+<h4 align="center">Статистика - Зал &numero; <span id="hall">000</span></h4>
 <table class="table " style="white-space: nowrap;"> <!-- table-striped -->
 <thead>
 <tr><th style="text-align:left;" class="col-md-1">&nbsp;&nbsp;Номинал&nbsp;&nbsp;</th>
@@ -389,12 +392,20 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 					<li><a href="tel:88003333036"><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; Техподдержка</a></li>
 					<li><a href="#" onclick="app();"><span class="glyphicon glyphicon-thumbs-up"></span> &nbsp; Оценить приложение</a></li>
 					<li><a href="#" onclick="settings();"><span class="glyphicon glyphicon-cog"></span> &nbsp; Настройки</a></li>
-					<li><a href="javascript:logout();"><span class="glyphicon glyphicon-off"></span> &nbsp; Выход</a></li>
+					<li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-off"></span> &nbsp; Выход</a></li>
 				</ul>
 			</nav>
 </div>
 
 <script>
+function logout() {
+	localStorage.setItem("hall", null);
+    localStorage.setItem("token", null);
+    alert(111);
+    window.location.replace("index.html"); 
+}
+
+
 function changeGame() {
 	game = $("#gamename :selected").val();
 	var tmp = page;

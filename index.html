@@ -41,7 +41,7 @@ function checkConnection() {
 $(document).ready(function(){
 	
 	if (checkAuth()) {
-		location.href = 'main.html'; 
+		window.location.replace("main.html"); 
 	}
 });
 	window.addEventListener('load', function () {
@@ -109,6 +109,7 @@ $("#form_login").submit(function(){
     		} else {
     			localStorage.setItem("hall", club);
     			localStorage.setItem("token", data['token']);
+    			window.location.replace("main.html"); 
     		}
     		
     });
