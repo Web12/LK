@@ -27,14 +27,14 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 function checkConnection() {
-	var networkState = navigator.connection.type;
-	if (networkState == Connection.NONE) {
-		return false;
-	}	
-	else {
-		return true;
-	}	
-	
+	if (navigator.connection) {
+		var networkState = navigator.connection.type;
+		if (networkState == Connection.NONE) {
+			return false;
+		}	
+	}
+
+	return true;
 }
 
 function checkAuth() {
@@ -46,4 +46,15 @@ function checkAuth() {
 	} else {
 		return false;
 	}
+}
+
+function logout() {
+	localStorage.removeItem("hall");
+	localStorage.removeItem("token");
+	window.location.replace("index.html"); 
+}
+
+function app() 
+{
+	var ref = window.open('https://itunes.apple.com/ru/app/bingo-boom/id731852567?mt=8&uo=4', '_system');
 }
