@@ -156,7 +156,7 @@ $(function() {
 <div style="margin-top:15px;"></div>
 
 
-<h4 align="center">Статистика - Зал &numero; <span id="hall">000</span></h4>
+<h4 align="center"><h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Статистика за <span id="date_stat">сегодня</span></h4>
 <table class="table " style="white-space: nowrap;"> <!-- table-striped -->
 <thead>
 <tr><th style="text-align:left;" class="col-md-1">&nbsp;&nbsp;Номинал&nbsp;&nbsp;</th>
@@ -276,6 +276,7 @@ if (connect == false) return false;
 var nominal = [100,250,500,1000,2000,3000];
 var new_page = 'day';
 var url = "http://bingo-boom.ru/api141/v1/day";
+
 if (t == 'yesterday') { 
 	url = "http://bingo-boom.ru/api141/v1/yesterday";
 	new_page = 'yesterday';
@@ -326,7 +327,12 @@ $(".det").hide();
       $("#totall").text(number_format(data['total']['delta'], 0, '', ','));
       
       $("#detinall").text(number_format(data['total']['buyticket'], 0, '', ','));
-      $("#detoutall").text(number_format(data['total']['winticket'], 0, '', ','));      
+      $("#detoutall").text(number_format(data['total']['winticket'], 0, '', ','));   
+      if (new_page != 'day') { 
+      	$("#date_stat").text(data['date_start'] + ' - ' + data['date_end']);
+      }	else {
+      	$("#date_stat").text('за сегодня');
+      }
     }
     });  
     
