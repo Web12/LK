@@ -156,17 +156,11 @@ $(function() {
 <div style="margin-top:15px;"></div>
 
 
-<h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Статистика за сегодня</h4>
+<h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Личные сообщения</h4>
 <br>
-<table class="table" style="white-space: nowrap; /*font-size:14px*/"> 
-<tbody>
-<tr class="info"><td align="left"><b>Реализованных билетов</td><td align="right"><span id="buyticket">0</span> шт.</td></tr>
-<tr><td align="left"><b>Сумма ставок</td><td align="right"><span id="buysum">0</span> руб.</td></tr>
-<tr class="info"><td align="left"><b>Выигрышных билетов</td><td align="right"><span id="winticket">0</span> шт.</td></tr>
-<tr><td align="left"><b>Сумма выигрышей</td><td align="right"><span id="winsum">0</span> руб.</td></tr>
-<tr class="danger"><td align="left"><b>Доход</td><td align="right"><span id="delta">0</span> руб.</td></tr>
-</tbody>
-</table>
+<div id="news">
+
+</div>
   </div>
 
 
@@ -202,14 +196,8 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 </div>
 
 <script>
-function changeGame() {
-	game = $("#gamename :selected").val();
-	var tmp = page;
-	page = '';
-	stat(tmp);
-}
 
-function statday() {
+function news() {
 
 if (connect == false) return false;
 
@@ -223,23 +211,23 @@ $("#totall").text('0');
 $("#detinall").text('0');
 $("#detoutall").text('0');
 */
-    $.getJSON('http://bingo-boom.ru/api141/v1/day', {hall: hall, token: token}, function(data) {
+    $.getJSON('http://bingo-boom.ru/api141/v1/news', {hall: hall, token: token}, function(data) {
     
     if (data['error'] == '0') {
-
-   	  $("#buysum").text(number_format(data['total']['buysum'], 0, '', ','));
-      $("#winsum").text(number_format(data['total']['winsum'], 0, '', ','));
-      $("#delta").text(number_format(data['total']['delta'], 0, '', ','));
-      
-      $("#buyticket").text(number_format(data['total']['buyticket'], 0, '', ','));
-      $("#winticket").text(number_format(data['total']['winticket'], 0, '', ','));      
+ 		var html = '<table class="table"><tbody>';
+		$.each( data['news'], function( key, val ) {
+			html += "<tr><td>" + val['date'] + "</td><td>" + val['news'] + "</td></tr>";
+		});
+     	html += '</tbody></table>';
+     	$("#news").html(html);
+     
     }
     });  
    
 }
 
 $(document).ready(function(){
-  statday();
+  news();
 });
  
   </script>
