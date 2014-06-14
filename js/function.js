@@ -59,6 +59,11 @@ function app()
 	var ref = window.open('https://itunes.apple.com/ru/app/bingo-boom/id731852567?mt=8&uo=4', '_system');
 }
 
+function link(url)
+{
+	var ref = window.open(url, '_system');
+}
+
 monthName = (
 	function() {
 		var months = "январь, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь".split(",");

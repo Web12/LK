@@ -190,7 +190,6 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 					<li><a href="ticket.html"><span class="glyphicon glyphicon-bookmark"></span> &nbsp; Остаток билетов</a></li>
 					<li><a href="news.html"><span class="glyphicon glyphicon-comment"></span> &nbsp; Личные сообщения</a></li>
 					<li><a href="tel:88003333036"><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; Техподдержка</a></li>
-					<li><a href="http://bingo-boom.ru/" target="_system"><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; Test</a></li>
 					<li><a href="#" onclick="app();"><span class="glyphicon glyphicon-thumbs-up"></span> &nbsp; Оценить приложение</a></li>
 					<li><a href="#" onclick="settings();"><span class="glyphicon glyphicon-cog"></span> &nbsp; Настройки</a></li>
 					<li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-off"></span> &nbsp; Выход</a></li>
@@ -201,6 +200,7 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 <script>
 
 var page = 1;
+
 
 function news(t) {
 
@@ -232,6 +232,12 @@ $("#detoutall").text('0');
 		});
      	html += '</tbody></table>';
      	$("#news").html(html);
+     	
+     	$('.news a').replaceWith(function(){
+    		return '<a href="#" onclick=link("http://bingo-boom.ru/'+$(this).attr('href').replace("http://bingo-boom.ru/","") +'");>'+$(this).text()+'</a>';
+		});
+		
+		
      	if (page < 2) { $("#arrow_left").hide(); } else { $("#arrow_left").show(); } 
      	$("#arrow").show();
      	window.location.replace("news.html#top");
