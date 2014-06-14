@@ -206,7 +206,7 @@ $(function() {
 <table width="100%">
 <tr align="center">
 <td><button type="button" class="btn btn-primary" onclick="stat('day')">За сегодня</button></td>
-<td><button type="button" class="btn btn-success" onclick="stat('yesterday')">За вчера</button></td>
+<td><button type="button" class="btn btn-success" onclick="stat('week')">За неделю</button></td>
 <td><button type="button" class="btn btn-danger" onclick="stat('month')">За месяц</button></td>
 </tr>
 </table>
@@ -276,14 +276,18 @@ if (connect == false) return false;
 var nominal = [100,250,500,1000,2000,3000];
 var new_page = 'day';
 var url = "http://bingo-boom.ru/api141/v1/day";
-
-if (t == 'yesterday') { 
-	url = "http://bingo-boom.ru/api141/v1/yesterday";
-	new_page = 'yesterday';
+var date_stat = 'сегодня';
+if (t == 'week') { 
+	url = "http://bingo-boom.ru/api141/v1/week";
+	new_page = 'week';
+	date_stat = 'неделю';
 }	
 else if (t == 'month') {
 	url = "http://bingo-boom.ru/api141/v1/month";
 	new_page = 'month';
+	dt = new Date();
+	dt = dt.getMonth();
+	date_stat = monthName(dt+1);
 }
 
 //if (game != '0') {
@@ -328,11 +332,7 @@ $(".det").hide();
       
       $("#detinall").text(number_format(data['total']['buyticket'], 0, '', ','));
       $("#detoutall").text(number_format(data['total']['winticket'], 0, '', ','));   
-      if (new_page != 'day') { 
-      	$("#date_stat").text(data['date_start'] + ' - ' + data['date_end']);
-      }	else {
-      	$("#date_stat").text('за сегодня');
-      }
+	  $("#date_stat").text( date_stat );
     }
     });  
     
