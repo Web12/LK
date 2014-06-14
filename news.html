@@ -58,26 +58,16 @@ $(document).ready(function(){
   min-height: 46px;
   display: inline-block;*/
 }
-span.ball {
-    border: 1px solid #888888;
-    border-radius: 50%;
-    display: inline-block;
-    height: 10px;
-    margin-right: 4px;
-    margin-top: 4px;
-    padding: 0;
-    width: 10px;
-}
 .menu-wrapper {
     background: none repeat scroll 0 0 #FFFFFF;
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.12);
     display: table;
     height: 51px;
     opacity: 0.97;
-  /*  position: fixed;*/
+    position: fixed;
     width: 100%;
-   /* z-index: 9998;
-    top:0px;*/
+    z-index: 5;
+    top:0px;
 }
 .menu-button {
     background-attachment: scroll;
@@ -150,7 +140,7 @@ $(function() {
 				</table>
 				</div>-->
 			</div>
-			<div id="content" style="margin:0 20px;">
+			<div id="content" style="">
 
 
 <div style="margin-top:15px;"></div>
@@ -158,7 +148,7 @@ $(function() {
 
 <h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Личные сообщения</h4>
 <br>
-<div id="news">
+<div id="news" style="width:100%">
 
 </div>
   </div>
@@ -214,9 +204,9 @@ $("#detoutall").text('0');
     $.getJSON('http://bingo-boom.ru/api141/v1/news', {hall: hall, token: token}, function(data) {
     
     if (data['error'] == '0') {
- 		var html = '<table class="table"><tbody>';
+ 		var html = '<table class="table table-striped" style="max-width:100%"><tbody>';
 		$.each( data['news'], function( key, val ) {
-			html += "<tr><td>" + val['date'] + "</td><td>" + val['news'] + "</td></tr>";
+			html += "<tr><td>" + val['news'] + "</td></tr>";
 		});
      	html += '</tbody></table>';
      	$("#news").html(html);
