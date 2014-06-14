@@ -142,15 +142,27 @@ $(function() {
 			</div>
 			<div id="content" style="">
 
-
+<a name="top"></a>
 <div style="padding-top:55px;"></div>
-
+<style>
+.news { max-width:100%; }
+.news img { max-width:90%;}
+</style>
 
 <h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Личные сообщения</h4>
 <br>
 <div id="news" style="width:100%">
 
 </div>
+<div align="center" style="margin-top:20px; margin-bottom:5px; display:none;" id="arrow">
+<table width="100%">
+<tr align="center">
+<td id="arrow_left"><button type="button" class="btn btn-primary" onclick="news('left')"><span class="glyphicon glyphicon-arrow-left"></span> Назад</button></td>
+<td id="arrow_right"><button type="button" class="btn btn-primary" onclick="news('right')">Вперед <span class="glyphicon glyphicon-arrow-right"></span></button></td>
+</tr>
+</table>
+
+
   </div>
 
 
@@ -187,42 +199,15 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 
 <script>
 
-function mmm(){
+var page = 1;
 
-var minimized_elements = $('div.news');
-var maxLines = 10;
+function news(t) {
 
-minimized_elements.each(function(){    
-   // var textArr = $(this).text().split(/\n/); // Not supported in IE < 9
-    var textArr = $(this).html().replace(/\n?<br>/gi,"<br>").split(/<br>/);
-    var countLines = textArr.length;
-
-   // if (countLines > maxLines) {
-        text_less = textArr.slice(0, maxLines).join("<br>");
-        text_more = textArr.slice(maxLines, countLines).join("<br>");
-    //}
-    //else return;
-
-    $(this).html(
-        text_less + '<span>... </span><a href="#" class="more">More</a>'+
-        '<span style="display:none;">'+ text_more +' <a href="#" class="less">Less</a></span>'
-    );
-}); 
-
-$('a.more', minimized_elements).click(function(event){
-    event.preventDefault();
-    $(this).hide().prev().hide();
-    $(this).next().show();        
-});
-
-$('a.less', minimized_elements).click(function(event){
-    event.preventDefault();
-    $(this).parent().hide().prev().show().prev().show();    
-});
-
-};
-
-function news() {
+if (t == 'left') {
+	page--;
+} else if (t == 'right') {
+	page++;
+}
 
 if (connect == false) return false;
 
@@ -235,23 +220,27 @@ $("#outall").text('0');
 $("#totall").text('0');
 $("#detinall").text('0');
 $("#detoutall").text('0');
-*/
-    $.getJSON('http://bingo-boom.ru/api141/v1/news', {hall: hall, token: token}, function(data) {
+*/	
+	$("#arrow").hide();
+    $.getJSON('http://bingo-boom.ru/api141/v1/news', {hall: hall, token: token, page: page}, function(data) {
     
     if (data['error'] == '0') {
  		var html = '<table class="table table-striped" style="max-width:100%"><tbody>';
 		$.each( data['news'], function( key, val ) {
-			html += "<tr><td><div class='news'><kbd>" + val['date'] + "</kbd><br>" + val['news'] + "</div></td></tr>";
+			html += "<tr><td><div class='news'><kbd>" + val['date'] + "</kbd><br><br>" + val['news'] + "</div></td></tr>";
 		});
      	html += '</tbody></table>';
      	$("#news").html(html);
+     	if (page < 2) { $("#arrow_left").hide(); } else { $("#arrow_left").show(); } 
+     	$("#arrow").show();
+     	window.location.replace("news.html#top");
     }
     });  
    
 }
 
 $(document).ready(function(){
-  news();
+  news('now');
   
 });
  
