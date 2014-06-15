@@ -16,6 +16,8 @@
 		<author href="http://yoursite.com" email="harut@bingo-boom.ru">
 			HHV
 		</author>
+		<icon src="icon.png" />
+		<gap:splash src="splash2.png" gap:platform="ios" width="640" height="1136" />		
 		
 		<preference name="phonegap-version" value="3.3.0" />
 		<preference name="orientation" value="portrait" />
