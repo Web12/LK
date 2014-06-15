@@ -221,10 +221,10 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 <script>
 function changeGame() {
 	game = $("#gamename :selected").val();
-	statday(game);
+	statday();
 }
 
-function statday(game = 0) {
+function statday() {
 
 if (connect == false) return false;
 
