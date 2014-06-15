@@ -158,6 +158,13 @@ $(function() {
 
 <h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Статистика за сегодня</h4>
 <br>
+
+<table style="white-space: nowrap; width:100%;/*font-size:14px*/"> 
+<tbody>
+<tr align="center"><td><b>Jackpot 1: <kbd><span id="jackpot1">0</span> руб.</kbd></td><td><b>Jackpot 2: <kbd><span id="jackpot2">0</span> руб.</kbd></td></tr>
+</tbody>
+</table>
+<br>
 <table class="table" style="white-space: nowrap; /*font-size:14px*/"> 
 <tbody>
 <tr class="info"><td align="left"><b>Реализованных билетов</td><td align="right"><span id="buyticket">0</span> шт.</td></tr>
@@ -168,17 +175,14 @@ $(function() {
 </tbody>
 </table>
 
+<select class="form-control" onchange="changeGame()" id="gamename">
+  <option value="0" selected>--- Все Игры ---</option>
+  <option value="BINGO">Бинго</option>
+  <option value="SEABATTLE">Морской Бой</option>
+  <option value="LINE">Lucky Line</option>
+</select>
 
 
-<br>
-<h4 align="center">Джекпот</h4>
-<br>
-<table class="table" style="white-space: nowrap; /*font-size:14px*/"> 
-<tbody>
-<tr><td align="left"><b>Jackpot 1</td><td align="right"><span id="jackpot1">0</span> руб.</td></tr>
-<tr><td align="left"><b>Jackpot 2</td><td align="right"><span id="jackpot2">0</span> руб.</td></tr>
-</tbody>
-</table>
 
 
   </div>
@@ -217,26 +221,26 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 <script>
 function changeGame() {
 	game = $("#gamename :selected").val();
-	var tmp = page;
-	page = '';
-	stat(tmp);
+	statday(game);
 }
 
-function statday() {
+function statday(game = 0) {
 
 if (connect == false) return false;
 
-//if (game != '0') {
-	//url = url + '?game=' + game;
-//}
+url = 'http://bingo-boom.ru/api141/v1/day';
+if (game != '0') {
+	url = url + '?game=' + game;
+}
 
-/*$("#buyticket").text('0');
-$("#outall").text('0');
-$("#totall").text('0');
-$("#detinall").text('0');
-$("#detoutall").text('0');
-*/
-    $.getJSON('http://bingo-boom.ru/api141/v1/day', {hall: hall, token: token}, function(data) {
+   	  $("#buysum").text('0');
+      $("#winsum").text('0');
+      $("#delta").text('0');
+      
+      $("#buyticket").text('0');
+      $("#winticket").text('0');
+      
+    $.getJSON(url, {hall: hall, token: token}, function(data) {
     
     if (data['error'] == '0') {
 
