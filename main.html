@@ -73,7 +73,7 @@ span.ball {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.12);
     display: table;
     height: 51px;
-    opacity: 0.97;
+   /* opacity: 0.97;*/
   /*  position: fixed;*/
     width: 100%;
    /* z-index: 9998;
@@ -82,13 +82,13 @@ span.ball {
 .menu-button {
     background-attachment: scroll;
     background-clip: border-box;
-    background-image: url("img/menu.png");
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("img/icon-menu.png");
     background-origin: padding-box;
-    background-position: center;
+    background-position: 10px 18px;
     background-repeat: no-repeat;
-    background-size: 25px 25px !important;
-   /* background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC") no-repeat scroll center center rgba(0, 0, 0, 0);
-    */
+    background-size: 21px 15px !important;
+    
     display: block;
     width: 42px;
     height:50px;
@@ -134,21 +134,17 @@ $(function() {
 
 			<div id="header">
 				<div class="menu-wrapper">
-			<!--	<table witdh="100">
-				<tr><td>-->
+
 				<table width="100%" style="background:#333">
 				<tr>
 				<td width="50">				
 				<a href="#menu" class="menu-button menu-trigger"></a>
 				</td>
 				<td align="center"><h4 style="color:#fff"><b>«Бинго Бум»</b></h4></td>
-				<td width="50"><img src="img/ajax.gif" id="ajax" style="display:none"></td>
+				<td width="50" align="right"><img src="img/ajax.gif" id="ajax" style="display:none"></td>
 				</tr>				
 				</table>
-				
-				<!--</td></tr>
-				</table>
-				</div>-->
+
 			</div>
 			<div id="content" style="margin:0 20px;">
 
