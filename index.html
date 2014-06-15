@@ -136,7 +136,7 @@ $('#model_error').on('hidden.bs.modal', function (e) {
 <script>
 $(document).ajaxError(function(){
 	if (checkConnection() == false) { $('#model_error').modal('show'); }
-	else { alert("Ошибка!"); }
+	else { $('#model_error').modal('show'); }
 });
 </script>    
  

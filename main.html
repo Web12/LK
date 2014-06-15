@@ -167,8 +167,21 @@ $(function() {
 <tr class="danger"><td align="left"><b>Доход</td><td align="right"><span id="delta">0</span> руб.</td></tr>
 </tbody>
 </table>
-  </div>
 
+
+
+<br>
+<h4 align="center">Джекпот</h4>
+<br>
+<table class="table" style="white-space: nowrap; /*font-size:14px*/"> 
+<tbody>
+<tr><td align="left"><b>Jackpot 1</td><td align="right"><span id="jackpot1">0</span> руб.</td></tr>
+<tr><td align="left"><b>Jackpot 2</td><td align="right"><span id="jackpot2">0</span> руб.</td></tr>
+</tbody>
+</table>
+
+
+  </div>
 
 
 </div>
@@ -232,7 +245,10 @@ $("#detoutall").text('0');
       $("#delta").text(number_format(data['total']['delta'], 0, '', ','));
       
       $("#buyticket").text(number_format(data['total']['buyticket'], 0, '', ','));
-      $("#winticket").text(number_format(data['total']['winticket'], 0, '', ','));      
+      $("#winticket").text(number_format(data['total']['winticket'], 0, '', ',')); 
+      
+      $("#jackpot1").text(number_format(data['jackpot']['1'], 0, '', ','));
+      $("#jackpot2").text(number_format(data['jackpot']['2'], 0, '', ','));
     }
     });  
    
@@ -248,7 +264,7 @@ $(document).ready(function(){
 <script>
 $(document).ajaxError(function(){
 	if (checkConnection() == false) { $('#model_error').modal('show'); }
-	else { alert("Ошибка!"); }
+	else { $('#model_error').modal('show'); }
 });
 </script>    
  

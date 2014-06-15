@@ -147,6 +147,7 @@ $(function() {
 <style>
 .news { max-width:100%; }
 .news img { max-width:98%;}
+.news kbd { background:#500103; }
 </style>
 
 <h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Личные сообщения</h4>
@@ -221,7 +222,7 @@ $("#outall").text('0');
 $("#totall").text('0');
 $("#detinall").text('0');
 $("#detoutall").text('0');
-*/	
+*/	$("#news").html('');
 	$("#arrow").hide();
     $.getJSON('http://bingo-boom.ru/api141/v1/news', {hall: hall, token: token, page: page}, function(data) {
     
@@ -257,7 +258,7 @@ $(document).ready(function(){
 <script>
 $(document).ajaxError(function(){
 	if (checkConnection() == false) { $('#model_error').modal('show'); }
-	else { alert("Ошибка!"); }
+	else { $('#model_error').modal('show'); }
 });
 </script>    
  

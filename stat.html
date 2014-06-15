@@ -156,7 +156,7 @@ $(function() {
 <div style="margin-top:15px;"></div>
 
 
-<h4 align="center"><h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Статистика за <span id="date_stat">сегодня</span></h4>
+<h4 align="center"><h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Статистика за <span id="date_stat">вчера</span></h4>
 <table class="table " style="white-space: nowrap;"> <!-- table-striped -->
 <thead>
 <tr><th style="text-align:left;" class="col-md-1">&nbsp;&nbsp;Номинал&nbsp;&nbsp;</th>
@@ -205,7 +205,7 @@ $(function() {
 <div align="center" style="position:fixed; bottom:5px; z-index:50; left:0; width:100%;">
 <table width="100%">
 <tr align="center">
-<td><button type="button" class="btn btn-primary" onclick="stat('day')">За сегодня</button></td>
+<td><button type="button" class="btn btn-primary" onclick="stat('day')">За вчера</button></td>
 <td><button type="button" class="btn btn-success" onclick="stat('week')">За неделю</button></td>
 <td><button type="button" class="btn btn-danger" onclick="stat('month')">За месяц</button></td>
 </tr>
@@ -276,8 +276,8 @@ if (connect == false) return false;
 
 var nominal = [100,250,500,1000,2000,3000];
 var new_page = 'day';
-var url = "http://bingo-boom.ru/api141/v1/day";
-var date_stat = 'сегодня';
+var url = "http://bingo-boom.ru/api141/v1/yesterday";
+var date_stat = 'вчера';
 if (t == 'week') { 
 	url = "http://bingo-boom.ru/api141/v1/week";
 	new_page = 'week';
@@ -352,7 +352,7 @@ $(".det").hide();
 <script>
 $(document).ajaxError(function(){
 	if (checkConnection() == false) { $('#model_error').modal('show'); }
-	else { alert("Ошибка!"); }
+	else { $('#model_error').modal('show'); }
 });
 </script>    
  
