@@ -83,7 +83,7 @@ span.ball {
     background-attachment: scroll;
     background-clip: border-box;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url("icon/icon-menu.png");
+    background-image: url("img/icon-menu.png");
     background-origin: padding-box;
     background-position: 10px 18px;
     background-repeat: no-repeat;
@@ -142,7 +142,7 @@ $(function() {
 				<a href="#menu" class="menu-button menu-trigger"></a>
 				</td>
 				<td align="center"><h4 style="color:#500103"><b>«Бинго Бум»</b></h4></td>
-				<td width="50">&nbsp;</td>
+				<td width="50"><img src="img/ajax.gif" id="ajax" style="display:none"></td>
 				</tr>				
 				</table>
 				
@@ -354,7 +354,13 @@ $(document).ajaxError(function(){
 	if (checkConnection() == false) { $('#model_error').modal('show'); }
 	else { $('#model_error').modal('show'); }
 });
-</script>    
+$(document).ajaxStart(function(){
+	$('#ajax').show();
+});
+$(document).ajaxStop(function(){
+	$('#ajax').hide();
+});
+</script>     
  
  
 
