@@ -228,15 +228,23 @@ if (connect == false) return false;
     $.getJSON('http://bingo-boom.ru/api141/v1/ticket', {hall: hall, token: token}, function(data) {
     
     if (data['error'] == '0') {
- 		var html = '<table class="table table-striped"><tbody>';
+ 		var html = '';
+ 		var game = '';
 		$.each( data['ticket'], function( key, val ) {
-			var game = 'Бинго';
-			if (val['game'] == 'SEABATTLE') game = 'Морской Бой';
-			else if (val['game'] == 'LINE') game = 'Lucky Line';
+			
+			if (val['game'] != game) {
+				game = val['game'];
+				
+				if (val['game'] == 'BINGO') game_name = 'Бинго';
+				else if (val['game'] == 'SEABATTLE') game_name = 'Морской Бой';
+				else if (val['game'] == 'LINE') game_name = 'Lucky Line';
+				if (html != '') html += '</tbody></table>';
+				html += '<h4>'+game_name+'</h4><table class="table table-striped"><tbody>';
+			}			
 			
 			var cl = "<span class='ball ball-"+val['price']+"'></span>";
 		
-			html += "<tr><td align='left'>"+ cl +" "+ val['price'] +" "+ game +"</td><td align='right'>"+val['count']+" шт.</td></tr>";
+			html += "<tr><td align='left'>"+ cl +" "+ val['price'] +"</td><td align='right'>"+val['count']+" шт.</td></tr>";
 		});
      	html += '</tbody></table>';
      	$("#ticket").html(html);
