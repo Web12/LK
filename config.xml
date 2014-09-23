@@ -20,7 +20,7 @@
 		
 		<preference name="phonegap-version" value="3.5.0" />
 		<preference name="orientation" value="portrait" />
-		<preference name="fullscreen" value="false" />
+		<preference name="fullscreen" value="true" />
 		<preference name="DisallowOverscroll" value="true"/>
 		
 		<gap:platform name="ios" />
@@ -32,12 +32,7 @@
 		<gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" />
 		<gap:plugin name="com.phonegap.plugin.statusbar" />
 		<gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.1.0" />
-		<gap:config-file platform="ios" parent="UIStatusBarHidden">
-			<true/>
-		</gap:config-file>
-		<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
-			<false/>
-		</gap:config-file>
+	
 		<preference name="StatusBarOverlaysWebView" value="true" />
 
 		<access origin="http://api.bingo-boom.net" subdomains="true" />
