@@ -5,21 +5,18 @@
 		 id = "com.phonegap.example"
 		 version = "1.0.0"
 		 versionCode = "10" >
-		<preference name="phonegap-version" value="3.3.0" />
-		
-		<name>Bingo-Boom Partner</name>
-		
+    
+		<name>Партнёр Bingo-Boom</name>		
 		<description>
-			Bingo-Boom Partner
-		</description>
-		
-		<author href="http://yoursite.com" email="harut@bingo-boom.ru">
-			HHV
+			Партнёр Bingo-Boom
+		</description>		
+		<author href="http://bingo-boom.ru/" email="harut@bingo-boom.ru">
+			Bingo Boom
 		</author>
 		<icon src="img/icon.png" />
-		<gap:splash src="img/splash.png" gap:platform="ios" width="640" height="1136" />		
+		<gap:splash src="img/splash2.png" gap:platform="ios" width="640" height="1136" />		
 		
-		<preference name="phonegap-version" value="3.3.0" />
+		<preference name="phonegap-version" value="3.5.0" />
 		<preference name="orientation" value="portrait" />
 		<preference name="fullscreen" value="true" />
 		<preference name="DisallowOverscroll" value="true"/>
@@ -41,9 +38,7 @@
 			<false/>
 		</gap:config-file>
 		<preference name="StatusBarOverlaysWebView" value="true" />
-		
-		
-		
+
 		<access origin="http://api.bingo-boom.net" subdomains="true" />
 		<access origin="http://bingo-boom.ru" subdomains="true" />
 		
