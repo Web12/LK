@@ -6,9 +6,9 @@
 		 version = "1.0.0"
 		 versionCode = "10" >
     
-		<name>Партнeр Bingo-Boom</name>		
+		<name>Партнер Bingo-Boom</name>		
 		<description>
-			Партнeр Bingo-Boom
+			Партнер Bingo-Boom
 		</description>		
 		<author href="http://bingo-boom.ru/" email="harut@bingo-boom.ru">
 			Bingo Boom
@@ -20,7 +20,7 @@
 		
 		<preference name="phonegap-version" value="3.5.0" />
 		<preference name="orientation" value="portrait" />
-		<preference name="fullscreen" value="true" />
+		<preference name="fullscreen" value="false" />
 		<preference name="DisallowOverscroll" value="true"/>
 		
 		<gap:platform name="ios" />

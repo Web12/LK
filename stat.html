@@ -15,9 +15,6 @@
 <script src="js/function.js"></script>
 
 <style>
-body {
-overflow-x: hidden;
-}
 .nav-tabs {
 /*  white-space: nowrap;
   overflow-x: hidden;
@@ -76,6 +73,7 @@ body {
 	color: #333;
 	position: relative;
 	-webkit-text-size-adjust: none;
+	overflow-x: hidden;
 }
 
 #page nav
@@ -104,11 +102,8 @@ body {
 </div>
 
 <div id="content">
-<div style="margin-top:15px;"></div>
-
-
-<h4 align="center"><h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Статистика за <span id="date_stat">вчера</span></h4>
-<table class="table " style="white-space: nowrap;"> <!-- table-striped -->
+<h4 align="center"><h4 align="center" style="margin:0;padding:0;"><b>Клуб &numero; <span id="hall">000</span></b><br>Статистика за <span id="date_stat">вчера</span></h4>
+<table class="table " style="white-space: nowrap; margin-bottom:0;"> <!-- table-striped -->
 <thead>
 <tr>
 <th style="text-align:right">Номинал</th>
