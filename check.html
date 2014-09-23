@@ -110,7 +110,7 @@ body {
 <div class="col-xs-5" align="center">Серия<br><input type="text" id="seria" name="seria" value="" class="form-control" maxlength="4" style="text-transform: uppercase; text-align:center" placeholder="AAAA" />
 </div>
 <div class="col-xs-7" align="center">Номер<br>
-<input type="number" id="number" name="number" value="" class="form-control" maxlength="8" style="text-transform: uppercase; text-align:center" placeholder="12345678" />
+<input type="tel" id="number" name="number" value="" class="form-control" maxlength="8" style="text-transform: uppercase; text-align:center" placeholder="12345678" pattern="[0-9]" />
 </div>
 </div>
 <br>
@@ -124,6 +124,13 @@ body {
 </div>
 
 <script>
+function onlynum()
+{	
+	var a = $("#number").val();
+	a.replace(/[^\d]/,'');
+	$("#number").val(a);
+}
+
 function changeGame() {
 	game = $("#gamename :selected").val();
 	statday();
