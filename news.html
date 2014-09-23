@@ -22,35 +22,6 @@ var page = '';
 var game = '0';
 </script>
 
-
-<script>
-$(document).ready(function(){
-/*	connect = checkConnection();
-	if (connect == false) { $('#model_error').modal('show'); }
-*/
-	if (!checkAuth()) {
-		window.location.replace("index.html");
-	} else {
-		$("#hall").text(hall);
-	}
-	
-	$('nav#menu').mmenu({
-		zposition: "front"
-	});
-	
-	FastClick.attach(document.body);
-});
-
-
-
-
-
-	/*window.addEventListener('load', function () {
-		if (checkConnection() == false) { $('#model_error').modal('show'); }
-		FastClick.attach(document.body);
-	}, false);*/
-</script> 
-
 <style>
 .nav-tabs {
 /*  white-space: nowrap;

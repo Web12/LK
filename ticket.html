@@ -21,27 +21,6 @@ var page = '';
 var game = '0';
 </script>
 
-
-<script>
-$(document).ready(function(){
-/*	connect = checkConnection();
-	if (connect == false) { $('#model_error').modal('show'); }
-*/
-	if (!checkAuth()) {
-		window.location.replace("index.html");
-	} else {
-		$("#hall").text(hall);
-	}
-	
-	$('nav#menu').mmenu({
-		zposition: "front"
-	});
-	
-	FastClick.attach(document.body);
-});
-
-</script> 
-
 <style>
 .nav-tabs {
 /*  white-space: nowrap;

@@ -75,3 +75,25 @@ monthName = (
 		}
 	}
 )();
+
+
+$(document).ready(function(){
+	/*	connect = checkConnection();
+	 i f (connect *== false) { $('#model_error').modal('show'); }
+	 */
+	if (!checkAuth()) {
+		window.location.replace("index.html");
+	} else {
+		$("#hall").text(hall);
+	}
+	
+	$('nav#menu').mmenu({
+		zposition: "front"
+	});
+	
+	FastClick.attach(document.body);
+});
+/*window.addEventListener('load', function () {
+ i f (checkCo*nnection() == false) { $('#model_error').modal('show'); }
+ FastClick.attach(document.body);
+ }, false);*/
