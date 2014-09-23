@@ -161,7 +161,7 @@ if (seria && number && seria.length==4 && number.length==8) {
    	  		else if (data['winGame'] == 'SEABATTLE') data['winGame'] = 'Морской Бой';
    	  		else if (data['winGame'] == 'LINE') data['winGame'] = 'Lucky Line';  	  		
    	  		
-   	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b><br>играл в тираже <b>№ '+data['winTir']+'</b> тур № <b>'+data['winTour']+'</b><br><b>'+data['winGame']+'</b><br>К сожалению без выигрыша!';
+   	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b><br>играл в тираже <b>№ '+data['winTir']+'</b> тур № <b>'+data['winTour']+'</b><br><b>'+data['winGame']+'</b> (номинал: '+data['winPrice']+' руб.)<br>К сожалению без выигрыша!';
    	  }
    	  else {
    	  		if (data['winGame'] == 'BINGO') data['winGame'] = 'Бинго';
@@ -169,7 +169,7 @@ if (seria && number && seria.length==4 && number.length==8) {
    	  		else if (data['winGame'] == 'SEABATTLE') data['winGame'] = 'Морской Бой';
    	  		else if (data['winGame'] == 'LINE') data['winGame'] = 'Lucky Line';
    	  		
-   	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b><br>играл в тираже № <b>'+data['winTir']+'</b> тур № <b>'+data['winTour']+'</b><br><b>'+data['winGame']+'</b><br>Выигрыш составил <b style="color:#500103">'+data['winSum']+' руб.<b>';
+   	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b><br>играл в тираже № <b>'+data['winTir']+'</b> тур № <b>'+data['winTour']+'</b><br><b>'+data['winGame']+'</b> (номинал: '+data['winPrice']+' руб.)<br>Выигрыш составил <b style="color:#500103">'+data['winSum']+' руб.<b>';
    	  }
    	  $("#res").html(html);
     }
