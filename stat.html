@@ -89,31 +89,26 @@ body {
 <body style="margin:0; padding:0;background:#fff;">
 <div id="page">
 
+<div id="header">
+<div class="menu-wrapper">
+<table width="100%" style="background:#333"><tr>
+<td width="50"><a href="#menu" class="menu-button menu-trigger"></a></td>
+<td align="center"><h4 style="color:#fff"><b>«Бинго Бум»</b></h4></td>
+<td width="50" align="right"><img src="img/ajax.gif" id="ajax" style="display:none; margin-right:10px"></td>
+</tr>				
+</table>
+</div>
+</div>
 
-			<div id="header">
-				<div class="menu-wrapper">
-
-				<table width="100%" style="background:#333">
-				<tr>
-				<td width="50">				
-				<a href="#menu" class="menu-button menu-trigger"></a>
-				</td>
-				<td align="center"><h4 style="color:#fff"><b>«Бинго Бум»</b></h4></td>
-				<td width="50" align="right"><img src="img/ajax.gif" id="ajax" style="display:none; margin-right:10px"></td>
-				</tr>				
-				</table>
-				
-			</div>
-			<div id="content">
-
-
+<div id="content">
 <div style="margin-top:15px;"></div>
 
 
 <h4 align="center"><h4 align="center"><b>Клуб &numero; <span id="hall">000</span></b><br>Статистика за <span id="date_stat">вчера</span></h4>
 <table class="table " style="white-space: nowrap;"> <!-- table-striped -->
 <thead>
-<tr><th style="text-align:left;" class="col-md-1">&nbsp;&nbsp;Номинал&nbsp;&nbsp;</th>
+<tr>
+<th style="text-align:right;">Номинал</th>
 <th style="text-align:right">Вход</th>
 <th style="text-align:right">Выход</th>
 <th style="text-align:right">Выруч.</th></tr>
@@ -159,8 +154,8 @@ body {
 <div align="center" style="position:fixed; bottom:5px; z-index:50; left:0; width:100%;">
 <table width="100%">
 <tr align="center">
-<td><button type="button" class="btn btn-primary" onclick="stat('day')">За вчера</button></td>
-<td><button type="button" class="btn btn-success" onclick="stat('week')">За неделю</button></td>
+<td><button type="button" class="btn btn-danger" onclick="stat('day')">За вчера</button></td>
+<td><button type="button" class="btn btn-danger" onclick="stat('week')">За неделю</button></td>
 <td><button type="button" class="btn btn-danger" onclick="stat('month')">За месяц</button></td>
 </tr>
 </table>
@@ -175,41 +170,8 @@ body {
   <option value="LINE">Lucky Line</option>
 </select>
 </div>
-
 </div>
 
-<div class="modal fade" id="model_error"><div class="modal-dialog"><div class="modal-content">
-<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<h4 class="modal-title">Ошибка соединения</h4></div>
-<div class="modal-body">Проверьте подключение к интернету!</div>
-</div></div></div>
-<script>
-$('#model_error').on('hidden.bs.modal', function (e) {
-	if (checkConnection() == false) {
-		$('#model_error').modal('show');
-	}	
-})
-</script>
-
-
-<nav id="menu">
-<ul>
-<li style="text-align:center;" class="mm-noresults"><img src="img/logo.png" style="max-width:70%;"></li>
-<li><a href="main.html"><span class="glyphicon glyphicon-home"></span> &nbsp; Главная</a></li>
-<li><a href="stat.html"><span class="glyphicon glyphicon-stats"></span> &nbsp; Статистика</a></li>		
-<li><a href="ticket.html"><span class="glyphicon glyphicon-bookmark"></span> &nbsp; Остаток квитанций</a></li>
-<li><a href="order.html"><span class="glyphicon glyphicon-tags"></span> &nbsp; Заказать квитанции</a></li>
-<li><a href="check.html"><span class="glyphicon glyphicon-screenshot"></span> &nbsp; Проверить квитанцию</a></li>
-<li><a href="news.html"><span class="glyphicon glyphicon-comment"></span> &nbsp; Личные сообщения</a></li>
-<li><a href="tel:88003333036"><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; Позвонить в техподдержку</a></li>
-<li><a href="#" onclick="app();"><span class="glyphicon glyphicon-thumbs-up"></span> &nbsp; Оценить приложение</a></li>
-<li><a href="#" onclick="settings();"><span class="glyphicon glyphicon-cog"></span> &nbsp; Настройки</a></li>
-<li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-off"></span> &nbsp; Выход</a></li>					
-</ul>
-</nav>
-
-
-</div>
 
 <script>
 
@@ -307,6 +269,43 @@ $(".det").hide();
   });
  
   </script>
+  
+
+
+<div class="modal fade" id="model_error"><div class="modal-dialog"><div class="modal-content">
+<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title">Ошибка соединения</h4></div>
+<div class="modal-body">Проверьте подключение к интернету!</div>
+</div></div></div>
+<script>
+$('#model_error').on('hidden.bs.modal', function (e) {
+	if (checkConnection() == false) {
+		$('#model_error').modal('show');
+	}	
+})
+</script>
+
+
+<nav id="menu">
+<ul>
+<li style="text-align:center;" class="mm-noresults"><img src="img/logo.png" style="max-width:70%;"></li>
+<li><a href="main.html"><span class="glyphicon glyphicon-home"></span> &nbsp; Главная</a></li>
+<li><a href="stat.html"><span class="glyphicon glyphicon-stats"></span> &nbsp; Статистика</a></li>		
+<li><a href="ticket.html"><span class="glyphicon glyphicon-bookmark"></span> &nbsp; Остаток квитанций</a></li>
+<li><a href="order.html"><span class="glyphicon glyphicon-tags"></span> &nbsp; Заказать квитанции</a></li>
+<li><a href="check.html"><span class="glyphicon glyphicon-screenshot"></span> &nbsp; Проверить квитанцию</a></li>
+<li><a href="news.html"><span class="glyphicon glyphicon-comment"></span> &nbsp; Личные сообщения</a></li>
+<li><a href="tel:88003333036"><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; Позвонить в техподдержку</a></li>
+<li><a href="#" onclick="app();"><span class="glyphicon glyphicon-thumbs-up"></span> &nbsp; Оценить приложение</a></li>
+<li><a href="#" onclick="settings();"><span class="glyphicon glyphicon-cog"></span> &nbsp; Настройки</a></li>
+<li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-off"></span> &nbsp; Выход</a></li>					
+</ul>
+</nav>
+
+
+</div>
+
+
 
 
 <script>
