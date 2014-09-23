@@ -119,7 +119,7 @@ body {
 <button type="button" class="btn btn-danger" onclick="check()">Проверить</button>
 </div>
 
-<br>
+<br><br>
 <div id="res" class="row" style="text-align:center;">
 
 </div>
@@ -145,7 +145,7 @@ var seria  = $("#seria").val();
 var number = $("#number").val();
 
 if (seria && number && seria.length==4 && number.length==8) {
-
+	$("#res").empty();
     $.getJSON('http://bingo-boom.ru/api141/v1/checkwin', {seria: seria, number: number, hall: hall, token: token}, function(data) {
     
     if (data['error'] == '0') {
@@ -156,10 +156,20 @@ if (seria && number && seria.length==4 && number.length==8) {
    	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b> в системе отсутствует!';
    	  }
    	  else if (data['winSum'] == '0') {
-   	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b><br>играл в тираже <b>№ '+data['winTir']+'</b> тур № <b>'+data['winTour']+'</b><br>К сожалению без выигрыша';
+   	  		if (data['winGame'] == 'BINGO') data['winGame'] = 'Бинго';
+   	  		else if (data['winGame'] == 'BINGO2') data['winGame'] = 'Бинго 2';
+   	  		else if (data['winGame'] == 'SEABATTLE') data['winGame'] = 'Морской Бой';
+   	  		else if (data['winGame'] == 'LINE') data['winGame'] = 'Lucky Line';  	  		
+   	  		
+   	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b><br>играл в тираже <b>№ '+data['winTir']+'</b> тур № <b>'+data['winTour']+'</b><br><b>'+data['winGame']+'</b><br>К сожалению без выигрыша!';
    	  }
    	  else {
-   	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b><br>играл в тираже № <b>'+data['winTir']+'</b> тур № <b>'+data['winTour']+'</b><br>Выигрыш составил <b style="color:#500103">'+data['winSum']+' руб.<b>';
+   	  		if (data['winGame'] == 'BINGO') data['winGame'] = 'Бинго';
+   	  		else if (data['winGame'] == 'BINGO2') data['winGame'] = 'Бинго 2';
+   	  		else if (data['winGame'] == 'SEABATTLE') data['winGame'] = 'Морской Бой';
+   	  		else if (data['winGame'] == 'LINE') data['winGame'] = 'Lucky Line';
+   	  		
+   	  		html = 'Билет <b>'+seria.toUpperCase()+' '+number+'</b><br>играл в тираже № <b>'+data['winTir']+'</b> тур № <b>'+data['winTour']+'</b><br><b>'+data['winGame']+'</b><br>Выигрыш составил <b style="color:#500103">'+data['winSum']+' руб.<b>';
    	  }
    	  $("#res").html(html);
     }
