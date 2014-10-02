@@ -98,7 +98,10 @@ $(document).ready(function(){
 	});
 	
 	FastClick.attach(document.body);
+	
 });
+
+
 /*window.addEventListener('load', function () {
  i f (checkCo*nnection() == false) { $('#model_error').modal('show'); }
  FastClick.attach(document.body);
